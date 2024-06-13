@@ -1,0 +1,36 @@
+Práctica 2: Análisis léxico con Flex
+
+A Flex le proporcionamos expresiones regulares y este devuelve cada componente léxico. 
+Se comporta como una tabla donde las filas son estados y las columnas, caracteres.
+archivo.d -> compilador flex -> analizador-archivo-d.c con yylex() (equivalente a sig_comp_lexico())
+Necesitamos un fichero de especificaciones
+
+------
+sección de definiciones (expresiones regulares, coger de la doc. de dlang)
+%%
+sección de reglas de traducción
+%%
+sección de rutinas auxiliares (código c)
+si se encuentra un identificador, guardar en la TS desde aquí
+------
+
+
+        	      yylex()  
+regresion.d -> [FLEX] <-	   [análisis sintáctico] 
+                      ->    	           
+                      comp. lex.	                
+          	
+        [tabla de símbolos]
+          	           	         
+          	           	errores.c/h [imprimir los errores que surjan]
+
+
+Solucion 1:
+Wrapper de yylex() llamada en sig_comp_lex()
+yytext: variable global de flex que tiene el lexema
+
+Solucion 2:
+Llamar a yylex() directamente
+
+!!! Asegurarse de que se ejecute en Ubuntu
+Ignorar warnings de yylex()

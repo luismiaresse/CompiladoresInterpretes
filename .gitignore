@@ -1,0 +1,5 @@
+*.odt
+*.zip
+cmake-build-debug/
+.idea
+EvaluacionParesP1

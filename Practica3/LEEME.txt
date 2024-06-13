@@ -1,0 +1,32 @@
+INTÉRPRETE MATEMÁTICO
+GENERAR ANALIZADOR LÉXICO DE FLEX
+flex --outfile=lexico.c flex.l
+
+GENERAR ANALIZADOR SINTÁCTICO DE BISON
+bison -d bison.y -o sintactico.c
+
+COMPILACIÓN
+./compilar.sh (si no tiene permisos, ejecutar antes 'chmod +x compilar.sh')
+
+EJECUCIÓN
+./calculadora <archivo opcional>
+
+DEFINICIÓN DEL ARCHIVO OPCIONAL
+Debe contener cada instrucción separada por un salto de línea. Estas se ejecutan secuencialmente de la misma
+manera que desde la consola. La extensión del archivo es irrelevante. Ejemplo:
+
+--- Inicio archivo "ejemplo.m" ---
+a = 5
+b = a * 7
+workspace()
+exit()
+--- Fin archivo ---
+
+USO DE LIBRERÍAS COMPARTIDAS
+Puedes importar librerías compartidas (.so) para extender las funciones matemáticas disponibles. Estas deben
+contener funciones que devuelvan un double y reciban dos parámetros double como máximo. Se proporciona una
+librería con las funciones suma y resta, que se pueden importar con el comando "import".
+
+Más info. utilizando el comando help.
+
+NOTA: Al compilar se arrojan dos warnings de función no usada, pero forma parte del código generado por Flex.

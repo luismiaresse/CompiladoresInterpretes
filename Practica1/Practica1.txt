@@ -1,0 +1,92 @@
+Practica 1: Programar un analizador léxico de regression.d (lenguaje D) en C
+==========================================================
+Flujo de datos
+
+                	   	sig_caracter()       sig_comp_lexico()
+regresion.d -> [sistema de entrada] <-	   [análisis léxico] <- [análisis sintáctico] 
+                	            ->    	 |^          ->
+                	           caracter      ||       comp. léxico
+          	   	 	       buscar()  v| comp. léxico
+          	           	         [tabla de símbolos]
+          	           	         
+          	           	errores.c/h [imprimir los errores que surjan]
+
+Es un productor-consumidor (léxico-sintáctico)
+definiciones.h tendrá los componentes léxicos asignados con números arbitrarios
+Ejemplo:
+#define IMPORT 300
+Salida del analizador léxico: <300,"import">
+
+Para cualquier cadena alfanumérica como "std", se podría definir como
+#define ID 301
+y el analizador léxico devolvería: <301,"std"> (si está en la tabla de símbolos, sino se inserta)
+
+Para los símbolos especiales, se podrían definir con su valor ASCII, sin emplear definiciones.h
+y el analizador léxico devolvería: <46,".">, obteniendo 46 con (int)'.' directamente
+
+
+La tabla de símbolos tendrá al principio las palabras reservadas y los lexemas
+Ejemplo: [IMPORT|"import"]
+Si es una cadena alfanumérica, se insertará como: [ID|"std"]
+siendo IMPORT e ID ints
+Esta tabla tendrá su propio .c y .h, teniendo el .h una función de inicialización y una de inserción
+
+El analizador léxico enviará al analizador sintáctico un struct (o puntero a struct) con un int y un char*
+El analizador sintáctico leerá el int y el char* y los imprimirá en pantalla hasta que no sea EOF
+Cada analizador tendrá como archivos fuente .c y .h (Ejemplo: lexico.c y lexico.h)
+El léxico tendrá en su .h sig_comp_lexico(), 
+
+El main.c realizará las siguientes tareas:
+Inicializar el compilador
+Inicializar el proceso de compilación
+Finalizar (limpiar y salir)
+
+
+Cada componente léxico tiene un correspondiente AFD. El analizador léxico puede ser otro AFD que cambia de estado
+a cada uno de estos AFDs dependiendo del caracter que entre. Cada AFD es una función. Todos devuelven el valor de
+int de la TS menos el de comentarios. Los comentarios anidados son de la forma a^n b^n, por lo que debe ser un AP.
+
+Ejemplo de error sintáctico: 0b0x1 se detecta como 0b0 (núm. binario) y x1 (identificador) para así generalizar y
+no tener que hacer excepciones. El analizador sintáctico detectará el error.
+
+errores.c y .h: gestiona los errores del código, simplemente los imprime
+
+sig_caracter(): llamada en bucle para leer caracteres del fichero hasta EOF. Está en sistentrada.h
+
+Sistema de entrada: doble centinela (2 EOF)
+Capacidad memoria "infinita". Limitación: tamaño máximo de lexema: depende del tamaño de ambos bloques (quitando EOF)
+Empezar con tamaño enorme (para poder meter todo el código fuente) y acotarlo para ver los problemas que puede haber 
+para pasar entre bloques. Se supone que los 2 bloques agotan los recursos de la máquina. Le proporciona al ana. léxico
+el lexema (desde el puntero inicio hasta fin)
+Cada bloque es un array de char
+Hay un puntero de inicio y otro de fin (delantero en los apuntes). Se lee por bloques de caracteres del fichero (fread() útil)
+Bloque A: [][][][][][][EOF]; ini -> A[0]; fin -> A[0]  
+Bloque B: [][][][][][][EOF]
+
+Avance: se carga el primer bloque y el lexico pide un char con sig_caracter(), se comprueba si es EOF, si no lo es fin 
+se mueve al siguiente; si lo es especifica el bloque (A o B) y se carga el otro bloque
+Bloque A: [i][m][p][o][r][t][EOF]; ini -> A[0]; fin -> A[1]  
+Bloque B: [][][][][][][EOF]
+
+...
+
+Bloque A: [i][m][p][o][r][t][EOF]; ini -> A[0]; fin -> A[6] (EOF) => Cargar bloque B 
+Bloque B: [][][][][][][EOF]
+
+Bloque A: [i][m][p][o][r][t][EOF]; ini -> A[0]; fin -> B[0]; Lexico aceptaría en su autómata el lexema 
+Bloque B: [ ][s][t][d][.][s][EOF]
+
+Caso dificil: lexema "importante"
+Bloque A: [][][][][][i][EOF]; ini -> A[5]; fin -> B[6] => Carga bloque A 
+Bloque B: [m][p][o][r][t][a][EOF]
+
+(si siguiera normal)
+Bloque A: [n][t][e][][][][EOF]; ini -> ? (se borró su posición); fin -> A[0]; Se pierde parte del lexema
+Bloque B: [m][p][o][r][t][a][EOF]
+
+Posible solución: comprobar que inicio está en el bloque que se sobreescribiría y decir que terminó el lexema en fin, mandando 
+un espacio para que acepte; meterlo en la TS como un identificador y "nte" como otro
+Otra: devolver un error de tamaño máximo de lexema
+
+Actualizar punteros ini y fin: se retrocede en uno si el autómata devuelve el caracter (estado final con *). !!! Si retrocede 
+al fin del otro bloque, se carga un bloque que sobreescribe al nuevo

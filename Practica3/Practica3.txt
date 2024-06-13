@@ -1,0 +1,26 @@
+Práctica 3: Desarrollar un intérprete de comandos en C que permita realizar operaciones matemáticas, inspirado en Matlab
+Versión básica (permite sacar 10)
+Versión "premium" para subir nota
+
+-- Análisis de requisitos (básica) --
+Ejecutar operaciones aritméticas básicas (enteros y punto flotante, paréntesis, operaciones)
+Funciones básicas (trigonométricas y logarítmicas)
+Permitir el uso de constantes matemáticas (números PI y E)
+Dos modos: abrir un fichero como parámetro, o desde dentro con una función tipo "load()"; se abrirá el fichero y ejecutará las instrucciones de este
+(archivo .t)
+??? Poder moverse en el texto (cursor)
+ECHO OFF / ON: Se imprime los resultados o no
+Poder ejecutar comandos del sistema como workspace (imprimir una tabla con el conjunto de variables inicializadas en la sesión), clear (borrar todas las variables del workspace),
+load, help (imprime la sintaxis rápida de la calculadora y algunas funciones), exit
+Los tipos de dato puede ser en todas float (supongo que representaría los enteros si se detectan como enteros)
+Error cuando se emplean variables sin inicializar, sintaxis incorrecta (paréntesis no cerrado, etc), errores matemáticos tipo 0/0, asignación a constante
+
+-- Versión premium --
+Incorporar librerías personalizadas de forma dinámica (import <archivo.so>) con dlfcn.h - dlopen(): abrir librería - dlsym(): puntero a la función 
+
+
+Emplear Flex y Bison (analizador sintáctico automático)
+Bison genera a partir de un archivo una gramática LALR(1)
+Tabla de símbolos: gestionar comandos, funciones admitidas (guardadas como puntero), constantes (como palabras reservadas) e identificadores. Conjunto de registros (union)
+Determinar si una variable está inicializada o no, y usar como workspace (guardar las asignaciones a variables).
+Arreglar error de bison: conflictos implica gramática ambigua

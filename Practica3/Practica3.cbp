@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Practica3"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/luismi/Syncthing/USC/COMPINTERP/Practica3"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Practica3">
+				<Option output="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Practica3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/luismi/Syncthing/USC/COMPINTERP/Practica3"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/."/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 Practica3"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Practica3/fast">
+				<Option output="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Practica3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/luismi/Syncthing/USC/COMPINTERP/Practica3"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/."/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 Practica3/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/luismi/Syncthing/USC/COMPINTERP/Practica3"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/luismi/Syncthing/USC/COMPINTERP/Practica3"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/luismi/Syncthing/USC/COMPINTERP/Practica3/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/comandos.c">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/comandos.h">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/errores.c">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/errores.h">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/lexico.c">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/lexico.h">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/libreria.c">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/main.c">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/sintactico.c">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/sintactico.h">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/tablasimbolos.c">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/tablasimbolos.h">
+			<Option target="Practica3"/>
+		</Unit>
+		<Unit filename="/home/luismi/Syncthing/USC/COMPINTERP/Practica3/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
